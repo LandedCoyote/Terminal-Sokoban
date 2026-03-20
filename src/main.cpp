@@ -4,23 +4,20 @@
 #include "Player.hpp"
 
 int main() {
-    Map gameMap;
-    Input userInput;
-    Game gameUpdate;
+    Map game_map;
+    Input user_input;
+    Game game_logic;
     Player player;
 
-    bool running = true;
-    while (running) {
-        // 1. 描画
-        gameMap.draw();
+    if (!game_map.LoadLevel("data/level1.txt")) return 1;
 
-        // 2. 入力待機
-        userInput.read(); 
+    // Mapが読み込んだ初期位置をPlayerに反映
+    player.SetPosition(game_map.start_x(), game_map.start_y());
 
-        // 3. 計算（今は中身が空ですが、ここで入力を元に処理します）
-        gameUpdate.update(userInput.lastKey);
-        
-        // 特定の入力で running = false にすれば終了できる
+    while (true) {
+        game_map.Draw(player);
+        user_input.Read();
+        game_logic.Update(user_input.lastKey, player, game_map);
     }
 
     return 0;

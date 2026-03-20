@@ -1,14 +1,20 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
+#include <cstddef>
+
 class Player {
 private:
-    int x, y;
+    size_t x_;
+    size_t y_;
+
 public:
-    Player() { x = 1; y = 1; }
-    void move(int dx, int dy);
-    int getX();
-    int getY();
+    Player();
+    void SetPosition(size_t x, size_t y);
+    void Move(int dx, int dy);
+
+    size_t x() const { return x_; }
+    size_t y() const { return y_; }
 };
 
 #endif

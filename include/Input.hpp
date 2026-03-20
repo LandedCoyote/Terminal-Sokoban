@@ -4,7 +4,7 @@
 class Input {
 public:
     char lastKey;
-    void read();
+    void Read();
 };
 
 #endif

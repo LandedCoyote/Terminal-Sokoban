@@ -1,6 +1,6 @@
 #include "Input.hpp"
 #include <iostream>
 
-void Input::read() {
+void Input::Read() {
     std::cin >> lastKey;
 }
